@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Answer Evaluator</title>
+  </head>
+  <body>
+    <h1> Answer Evaluator</h1>
+    <h4>Upload Master File</h4>
+    
+    <form method=post enctype=multipart/form-data>
+      <p><input type=file name=file_master>    
+      <h4>Upload Student File</h4>
+      <p><input type=file name=file_student>
+         <input type=submit value=upload>
+    </form>
+
+    <h1>Result:</h1>
+    {% if img_src %}
+      <img src="{{ img_src }}">
+    {% endif %}
+    
+    {% if extracted_text %}
+	<table>
+	<tr>
+	    <th> Question Number </th>
+		<th></th>
+		<th> Percentage of Answer correctness </th>
+	</tr>
+	{% for key,value in extracted_text.items() %}
+	    <tr>
+		     <th> {{key}}</th>
+			 <th></th>
+			 <th> {{value}}</th>
+		</tr>
+	{% endfor %}
+	</table>
+	{% endif %}
+	
+	{% if msg %}
+    <h1>{{ msg }}</h1>
+    {% endif %}
+	
+  </body>
+</html>
+    
